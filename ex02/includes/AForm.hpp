@@ -14,6 +14,8 @@ class Form
     const int         _requiredGradeToSign;
     const int         _requiredGradeToExecute;
 
+    virtual void  formAction() = 0;
+
 		class GradeTooHighException : public std::exception
 		{
 			public: 
@@ -26,11 +28,17 @@ class Form
 				virtual const char* what() const throw();
 		};
 
+		class notSignedFormException : public std::exception
+		{
+			public: 
+				virtual const char* what() const throw();
+		};
+
 	public:
 		Form(const std::string name, const int requiredGradeToSign, const int requiredGradeToExecute);	
 		Form(const Form & copy);	
     Form& operator=(const Form& other);
-		~Form();
+		virtual ~Form();
 
     std::string getName() const;
     bool        getIsSigned() const;
@@ -38,6 +46,7 @@ class Form
     int         getRequiredGradeToExecute() const;
 
     void        beSigned(const Bureaucrat& bureaucrat);
+    
 };
 
 std::ostream& operator<<(std::ostream& os, const Form& s);

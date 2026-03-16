@@ -50,6 +50,11 @@ const char* Form::GradeTooLowException::what() const throw()
 	return "Form gradeTooLow";
 }
 
+const char* Form::notSignedFormException::what() const throw()
+{
+	return "Form is not signed";
+}
+
 std::string Form::getName() const
 {
   return _name;
@@ -70,14 +75,15 @@ int Form::getRequiredGradeToExecute() const
   return _requiredGradeToExecute;
 }
 
-void Form::beSigned(const Bureaucrat& bureaucrat)
+void  Form::beSigned(const Bureaucrat& bureaucrat)
 {
   int bureaucratGrade = bureaucrat.getGrade();
 
   if (bureaucratGrade <= _requiredGradeToSign)
-    _isSigned = true;
+    return _isSigned = true;
   else
 		throw Form::GradeTooLowException();
+  return false;
 }
 
 std::ostream& operator<<(std::ostream& stream, const Form& form)
