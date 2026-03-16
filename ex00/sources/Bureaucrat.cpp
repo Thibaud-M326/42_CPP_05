@@ -4,34 +4,35 @@
 
 Bureaucrat::Bureaucrat(const std::string name, const int grade)
 :
-	name(name)
+	_name(name)
 {
 	std::cout << "Bureaucrat constructor called" << std::endl;
-	if (grade > 150)
+	if (_grade > 150)
 		throw Bureaucrat::GradeTooLowException();
-	if (grade < 1)
+	if (_grade < 1)
 		throw Bureaucrat::GradeTooHighException();
+  _grade = grade;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat & copy)
 :
-	name(copy.name),
-	grade(copy.grade)
+	_name(copy._name),
+	_grade(copy._grade)
 {
 	std::cout << "Bureaucrat copy constructor called" << std::endl;
 }
 
-Bureaucrat& operator=(const Bureaucrat& other)
+Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
 {
   if (this == &other)
-    return &this;
-  _name = other.name;
-  _grade = other.name;
+    return *this;
+  _grade = other._grade;
+  return *this;
 }
 
 Bureaucrat::~Bureaucrat()
 {
-	std::cout << "Bureaucrat destructor called" << std::endl;
+	std::cout << "Bureaucrat destructor called on : " << _name << std::endl;
 }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw()
