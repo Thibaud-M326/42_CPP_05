@@ -6,10 +6,10 @@ int main()
 {
 	try
 	{
-		Bureaucrat jhon("jhon", 151);
+		Bureaucrat jhon("jhon", 120);
 	}
-	catch (std::exception & e)
-	{
-		std::cout << e.what() << std::endl;
-	}
+  catch (std::exception & e)
+  {
+    std::cout << e.what() << std::endl;
+  }
 }
