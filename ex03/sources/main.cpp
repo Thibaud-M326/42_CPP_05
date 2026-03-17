@@ -18,11 +18,13 @@ int main()
     rrf = someRandomIntern.makeForm("robotomy request", "Bender");  //sign 72, exec 45
     ppf = someRandomIntern.makeForm("presidential pardon", "Carnage");  //sign 72, exec 45
 
-    //cannot sign
+    //sign
     jhon.signForm(*rrf);
-    //cannot execute
+    //execute
     jhon.executeForm(*rrf);
+    //execute
     jhon.executeForm(*rrf);
+    //not yet signed
     jhon.executeForm(*ppf);
 
     delete rrf;
