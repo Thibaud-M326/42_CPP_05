@@ -37,9 +37,7 @@ ShrubberyCreationForm::cannotOpenFileException::cannotOpenFileException(std::str
 }
 
 ShrubberyCreationForm::cannotOpenFileException::~cannotOpenFileException () throw()
-{
-  std::cout << "cannotOpenFileException destructor called" << std::endl;
-}
+{}
 
 const char* ShrubberyCreationForm::cannotOpenFileException::what() const throw()
 {

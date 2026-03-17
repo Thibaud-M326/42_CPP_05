@@ -1,6 +1,6 @@
 CPP = c++
 CPPFLAGS = -Wall -Wextra -Werror -MMD -MP -std=c++98
-NAME = bureaucrat
+NAME = bureaucrat_00
 
 OBJ_DIR = ./.obj
 SRC_DIR = ./sources
