@@ -2,6 +2,7 @@
 #include <string>
 #include "../includes/Bureaucrat.hpp"
 #include "../includes/PresidentialPardonForm.hpp"
+#include "../includes/RobotomyRequestForm.hpp"
 
 int main()
 {
@@ -77,8 +78,25 @@ int main()
     std::cout << e.what() << "\n" << std::endl;
   }
 
-}
+  std::cout << std::endl;
 
+	try
+  {
+    Bureaucrat jhon("jhon", 45);
+
+    RobotomyRequestForm rrf("police"); //sign 72, exec 45
+
+    //can sign
+    jhon.signForm(rrf);
+    //can execute
+    jhon.executeForm(rrf);
+  }
+	catch (std::exception & e)
+  {
+    std::cout << e.what() << "\n" << std::endl;
+  }
+
+}
 
 // std::cout <<
 // "          🌿🌿🌿            \n"
