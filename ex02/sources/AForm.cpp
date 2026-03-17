@@ -1,4 +1,4 @@
-#include "../includes/Form.hpp"
+#include "../includes/AForm.hpp"
 
 #include <iostream>
 
@@ -55,6 +55,11 @@ const char* Form::notSignedFormException::what() const throw()
 	return "Form is not signed";
 }
 
+const char* Form::alreadySignedFormException::what() const throw()
+{
+	return "Form is already signed";
+}
+
 std::string Form::getName() const
 {
   return _name;
@@ -79,11 +84,27 @@ void  Form::beSigned(const Bureaucrat& bureaucrat)
 {
   int bureaucratGrade = bureaucrat.getGrade();
 
+  if (_isSigned)
+		throw Form::alreadySignedFormException();
+
   if (bureaucratGrade <= _requiredGradeToSign)
-    return _isSigned = true;
+    _isSigned = true;
   else
 		throw Form::GradeTooLowException();
-  return false;
+}
+
+void        Form::execute(Bureaucrat const & executor) const
+{
+  int bureaucratGrade = bureaucrat.getGrade();
+
+  if (!_isSigned)
+		throw Form::notSignedFormException();
+
+  if (bureaucratGrade <= _requiredGradeToExecute)
+    formAction();
+  else
+		throw Form::GradeTooLowException();
+
 }
 
 std::ostream& operator<<(std::ostream& stream, const Form& form)

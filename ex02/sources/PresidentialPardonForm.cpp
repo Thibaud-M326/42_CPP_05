@@ -28,7 +28,7 @@ PresidentialPardonForm::~PresidentialPardonForm()
   std::cout << "PresidentialPardonForm destructor called on :" << _target << std::endl;
 }
 
-PresidentialPardonForm::action()
+void  PresidentialPardonForm::formAction() const;
 {
   std::cout << _target << " has been pardoned by Zaphod Beeblebrox" std::endl;
 }

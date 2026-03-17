@@ -12,6 +12,7 @@ int main()
     PresidentialPardonForm ppf("police");
 
     jhon.signForm(ppf);
+    jhon.signForm(ppf);
     jhon.executeForm(ppf);
 	}
   catch (std::exception & e)
