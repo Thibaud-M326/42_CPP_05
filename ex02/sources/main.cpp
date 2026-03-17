@@ -3,6 +3,7 @@
 #include "../includes/Bureaucrat.hpp"
 #include "../includes/PresidentialPardonForm.hpp"
 #include "../includes/RobotomyRequestForm.hpp"
+#include "../includes/ShrubberyCreationForm.hpp"
 
 int main()
 {
@@ -84,7 +85,7 @@ int main()
   {
     Bureaucrat jhon("jhon", 45);
 
-    RobotomyRequestForm rrf("police"); //sign 72, exec 45
+    RobotomyRequestForm rrf("Jhon Weak"); //sign 72, exec 45
 
     //can sign
     jhon.signForm(rrf);
@@ -96,24 +97,23 @@ int main()
     std::cout << e.what() << "\n" << std::endl;
   }
 
+  std::cout << std::endl;
+
+	try
+  {
+    Bureaucrat jhon("jhon", 137);
+
+    ShrubberyCreationForm scf("platane"); //sign 145, exec 137
+
+    //can sign
+    jhon.signForm(scf);
+    //can execute
+    jhon.executeForm(scf);
+  }
+	catch (std::exception & e)
+  {
+    std::cout << e.what() << "\n" << std::endl;
+  }
+
 }
 
-// std::cout <<
-// "          🌿🌿🌿            \n"
-// "         /       \\         \n"
-// "        /  🐒     \\        \n"
-// "       /   |       \\       \n"
-// "      🍃  /|\\      🍃      \n"
-// "      |  / | \\      |      \n"
-// "      | /  |  \\     |      \n"
-// "    __|/   |   \\|___|      \n"
-// "   /   \\   |   /    \\     \n"
-// "  🌿    \\  |  /    🌿      \n"
-// "         \\ | /             \n"
-// "          \\|/              \n"
-// "           |                \n"
-// "           |                \n"
-// "           |                \n"
-// "        ___| ___            \n"
-// "       /        \\          \n"
-// "      /          \\         \n" << std::endl;

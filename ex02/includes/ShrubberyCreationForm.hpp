@@ -11,6 +11,16 @@ class ShrubberyCreationForm : public AForm
 
     virtual void  formAction() const;
 
+    class cannotOpenFileException : public std::exception
+    {
+      private:
+        std::string _errorMsg;
+			public: 
+        cannotOpenFileException(std::string filename) throw();
+				virtual const char* what() const throw();
+        ~cannotOpenFileException() throw();
+    };
+
 	public:
 		ShrubberyCreationForm(const std::string target);	
 		ShrubberyCreationForm(const ShrubberyCreationForm& copy);	

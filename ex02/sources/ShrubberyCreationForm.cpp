@@ -1,5 +1,6 @@
 #include "../includes/ShrubberyCreationForm.hpp"
 #include <iostream>
+#include <fstream> 
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string target)
 :
@@ -30,7 +31,48 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
   std::cout << "ShrubberyCreationForm destructor called on :" << _target << std::endl;
 }
 
+ShrubberyCreationForm::cannotOpenFileException::cannotOpenFileException(std::string filename) throw()
+{
+  _errorMsg = "Cant open file " + filename;
+}
+
+ShrubberyCreationForm::cannotOpenFileException::~cannotOpenFileException () throw()
+{
+  std::cout << "cannotOpenFileException destructor called" << std::endl;
+}
+
+const char* ShrubberyCreationForm::cannotOpenFileException::what() const throw()
+{
+  return _errorMsg.c_str();
+}
+
 void  ShrubberyCreationForm::formAction() const
 {
-  std::cout << _target << " has been pardoned by Zaphod Beeblebrox" << std::endl;
+  std::string filename = _target + "_shrubbery";
+  
+  std::ofstream file(_target.c_str());
+  if (!file.is_open())
+    throw ShrubberyCreationForm::cannotOpenFileException(filename);
+
+  file <<
+  "          🌿🌿🌿            \n"
+  "         /       \\         \n"
+  "        /  🐒     \\        \n"
+  "       /   |       \\       \n"
+  "      🍃  /|\\      🍃      \n"
+  "      |  / | \\      |      \n"
+  "      | /  |  \\     |      \n"
+  "    __|/   |   \\|___|      \n"
+  "   /   \\   |   /    \\     \n"
+  "  🌿    \\  |  /    🌿      \n"
+  "         \\ | /             \n"
+  "          \\|/              \n"
+  "           |                \n"
+  "           |                \n"
+  "           |                \n"
+  "        ___| ___            \n"
+  "       /        \\          \n"
+  "      /          \\         \n";
+
+  file.close();
 }
