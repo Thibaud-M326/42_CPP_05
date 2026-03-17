@@ -50,7 +50,7 @@ void  ShrubberyCreationForm::formAction() const
 {
   std::string filename = _target + "_shrubbery";
   
-  std::ofstream file(_target.c_str());
+  std::ofstream file(filename.c_str());
   if (!file.is_open())
     throw ShrubberyCreationForm::cannotOpenFileException(filename);
 
@@ -73,6 +73,5 @@ void  ShrubberyCreationForm::formAction() const
   "        ___| ___            \n"
   "       /        \\          \n"
   "      /          \\         \n";
-
   file.close();
 }
