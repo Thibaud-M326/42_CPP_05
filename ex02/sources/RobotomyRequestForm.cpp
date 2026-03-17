@@ -34,10 +34,8 @@ RobotomyRequestForm::~RobotomyRequestForm()
 void  RobotomyRequestForm::formAction() const
 {
   srand(time(0));
-
   int randomNum = rand() % 2;
   
-
   std::cout << "**drilling noise**" << std::endl;
   if (randomNum == 1)
     std::cout << _target << " has been robotomized" << std::endl;
